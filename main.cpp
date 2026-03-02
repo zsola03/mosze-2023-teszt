@@ -4,43 +4,36 @@ constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    // HIBA: NELEMENTS nincs deklaralva, helyesen N_ELEMENTS lenne
-    int *b = new int[NELEMENTS];
+    int* b = new int[N_ELEMENTS];
 
-    // HIBA: rossz idezojel (char helyett string kell)
-    // HIBA: hianyzik a pontosvesszo
-    std::cout << '1-100 ertekek duplazasa'
+    std::cout << "1-100 ertekek duplazasa" << std::endl;
 
-    // HIBA: hianyos for ciklus (nincs feltetel es noveles)
-    for (int i = 0;)
+    // Tomb feltoltese
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
         b[i] = i * 2;
     }
 
-    // HIBA: hibas ciklusfeltetel (i mindig 0 -> nem fut le)
-    for (int i = 0; i; i++)
+    // Kiiras
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        // HIBA: hianyzik a kiirt ertek es a pontosvesszo
-        std::cout << "Ertek:"
+        std::cout << "Ertek: " << b[i] << std::endl;
     }
 
-    std::cout << "Atlag szamitasa: " << std::endl;
+    std::cout << "Atlag szamitasa:" << std::endl;
 
-    // HIBA: nincs inicializalva
-    int atlag;
+    int atlag = 0;
 
-    // HIBA: vesszo van pontosvesszo helyett
-    for (int i = 0; i < N_ELEMENTS, i++)
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        // HIBA: hianyzik pontosvesszo
-        atlag += b[i]
+        atlag += b[i];
     }
 
     atlag /= N_ELEMENTS;
 
     std::cout << "Atlag: " << atlag << std::endl;
 
-    // HIBA: memoria nincs felszabaditva (delete[] hianyzik)
+    delete[] b;
 
     return 0;
 }
